@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
@@ -33,3 +34,8 @@ Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
 Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
 Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy');
 */
+
+// 显示登录页面
+Route::get('/login',[SessionsController::class,'create'])->name('login');
+Route::post('/login',[SessionsController::class,'store'])->name('login');
+Route::delete('/logout',[SessionsController::class,'delete'])->name('logout');
