@@ -38,4 +38,4 @@ Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy')
 // 显示登录页面
 Route::get('/login',[SessionsController::class,'create'])->name('login');
 Route::post('/login',[SessionsController::class,'store'])->name('login');
-Route::delete('/logout',[SessionsController::class,'delete'])->name('logout');
+Route::delete('/logout',[SessionsController::class,'destroy'])->name('logout');
