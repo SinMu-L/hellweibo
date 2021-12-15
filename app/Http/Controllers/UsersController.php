@@ -19,6 +19,11 @@ class UsersController extends Controller
         $this->middleware('guest',[
             'only' => ['create']
         ]);
+
+        // 限流 一个小时内只能提交 10 次请求；
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
     public function create(){
         // view('users.create') 和 view('users/create') 的区别不大，建议写 view('users.create')
