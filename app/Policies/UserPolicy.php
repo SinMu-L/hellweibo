@@ -22,4 +22,9 @@ class UserPolicy
     public function update(User $currentUser, User $user){
         return $currentUser->id === $user->id;
     }
+
+    public function destroy(User $currentUser,User $user){
+        // 当前用户是管理员，需要删除的用户不是当前用户且不是管理员
+        return $currentUser->is_admin && $currentUser->id !== $user->id && !$user->is_admin;
+    }
 }
