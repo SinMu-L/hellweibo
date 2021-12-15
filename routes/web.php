@@ -39,3 +39,5 @@ Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy')
 Route::get('/login',[SessionsController::class,'create'])->name('login');
 Route::post('/login',[SessionsController::class,'store'])->name('login');
 Route::delete('/logout',[SessionsController::class,'destroy'])->name('logout');
+
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
